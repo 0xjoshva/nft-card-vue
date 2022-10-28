@@ -1,7 +1,12 @@
 <template>
  <section>
   <div class="card">
+<div class="wrapper" @mouseover="monkey = true" @mouseleave="monkey = !true">
 <img src="../assets/image-equilibrium.jpg" alt="" class="image">
+<div class="overlay" v-if="monkey">
+<img src="../assets/icon-view.svg" alt="" >
+</div>
+</div>
 <h3 class="title">Equilibrium #3429</h3>
 <p class="description">Our Equilibrium collection promotes balance and calm.</p>
 <div class="badges">
@@ -18,6 +23,11 @@
 </template>
 <script>
 export default {
+  data() {
+    return {
+      monkey: false
+    }
+  }
 }
 </script>
 <style scoped>
@@ -42,7 +52,9 @@ section{
 }
 .image{
   border-radius: 10px;
+  position: relative;
 }
+
 .title{
   color: var(--white);
   font-family: 'Outfit', sans-serif;
@@ -100,5 +112,34 @@ hr{
   border-radius: 50%;
   width:auto;
 }
+.wrapper{
+ position: relative;
+ width: 320px;
+ height: 320px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+.image{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.overlay{
+  position: relative;
+z-index: 10;
+background: hsla(178, 100%, 50%, 0.397);
+width: 320px;
+height: 320px ;
+display: flex;
+align-items: center;
+justify-content: center;
+  border-radius: 7px;
+}
+.overlay img{
+  height: 50px;
+  width: auto;
 
+}
 </style>
